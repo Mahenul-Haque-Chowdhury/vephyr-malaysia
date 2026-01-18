@@ -335,7 +335,7 @@ export const Navbar = () => {
                 alt="VEPHYR"
                 width={300}
                 height={72}
-                className="h-12 sm:h-14 md:h-20 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-none"
+                className="h-12 sm:h-14 md:h-20 w-auto max-w-45 sm:max-w-55 md:max-w-none"
                 priority
               />
             </motion.div>

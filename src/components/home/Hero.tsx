@@ -5,9 +5,10 @@ export const Hero = () => {
   const prefersReducedMotion = useReducedMotion();
   const titleDelay = prefersReducedMotion ? 0 : 0.95;
   const subtitleDelay = prefersReducedMotion ? 0 : 1.15;
+  const textEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
   const textTransition = prefersReducedMotion
     ? { duration: 0 }
-    : { duration: 0.9, ease: [0.22, 1, 0.36, 1] };
+    : { duration: 0.9, ease: textEase };
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
