@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useWishlistStore } from "@/store/useWishlistStore";
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useMemo, type MouseEvent } from "react";
 import { PRODUCTS, type Product } from "@/lib/products";
 
 type ProductGridProps = {
@@ -13,11 +13,6 @@ type ProductGridProps = {
 
 export const ProductGrid = ({ category, query }: ProductGridProps) => {
   const { isInWishlist, addItem, removeItem } = useWishlistStore();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const filteredProducts = useMemo(() => {
     const normalizedQuery = (query || "").trim().toLowerCase();
@@ -60,7 +55,7 @@ export const ProductGrid = ({ category, query }: ProductGridProps) => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-16">
           {filteredProducts.map((product) => {
-          const isWishlisted = mounted && isInWishlist(product.id);
+          const isWishlisted = isInWishlist(product.id);
           
           return (
             <Link href={`/product/${product.id}`} key={product.id} className="group block cursor-pointer">
@@ -114,4 +109,3 @@ export const ProductGrid = ({ category, query }: ProductGridProps) => {
     </section>
   );
 };
-

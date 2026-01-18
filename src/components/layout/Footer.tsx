@@ -99,13 +99,18 @@ export const Footer = () => {
 
         {/* Bottom Utility Bar */}
         <div className="pt-8 border-t border-charcoal/5 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-          <Link href="/" className="font-sans text-xs tracking-[0.2em] font-medium hover:opacity-60 transition-opacity cursor-pointer">
-            VEPHYR
-          </Link>
+          <div className="space-y-2">
+            <Link href="/" className="font-sans text-xs tracking-[0.2em] font-medium hover:opacity-60 transition-opacity cursor-pointer">
+              VEPHYR
+            </Link>
+            <p className="font-mono text-[10px] text-charcoal/40 uppercase tracking-widest">
+              Malaysia-based cloth brand importing from fine tailors of Bangladesh.
+            </p>
+          </div>
           
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8 font-mono text-[10px] text-charcoal/40 uppercase tracking-widest">
             <button className="hover:text-charcoal transition-colors text-left cursor-pointer">
-              Country: United States (USD)
+              Country: Malaysia (MYR)
             </button>
             <span className="hidden md:block text-charcoal/10">|</span>
             <Link href="/sitemap" className="hover:text-charcoal transition-colors cursor-pointer">

@@ -1,11 +1,5 @@
-import { Hero } from "@/components/home/Hero";
-import { ProductGrid } from "@/components/home/ProductGrid";
+import { HomePageClient } from "@/components/home/HomePageClient";
 
 export default function Home() {
-  return (
-    <main className="min-h-screen bg-alabaster selection:bg-charcoal selection:text-alabaster">
-      <Hero />
-      <ProductGrid />
-    </main>
-  );
+  return <HomePageClient />;
 }

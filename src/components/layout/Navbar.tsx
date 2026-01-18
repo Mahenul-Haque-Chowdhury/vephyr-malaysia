@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { useUIStore } from "@/store/useUIStore";
 import { useCartStore } from "@/store/useCartStore";
 import { useAuthStore } from "@/store/useAuthStore";
@@ -55,7 +56,6 @@ const SearchOverlay = () => {
   const { isSearchOpen, closeSearch } = useUIStore();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Product[]>([]);
-  const [isAnimating, setIsAnimating] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
@@ -75,38 +75,37 @@ const SearchOverlay = () => {
     setResults(filtered.slice(0, 6));
   }, []);
 
+  const handleClose = useCallback(() => {
+    closeSearch();
+    setQuery("");
+    setResults([]);
+  }, [closeSearch]);
+
   // Focus input when overlay opens
   useEffect(() => {
-    if (isSearchOpen) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        inputRef.current?.focus();
-      }, 300);
-    } else {
-      setQuery("");
-      setResults([]);
-      setTimeout(() => setIsAnimating(false), 500);
-    }
+    if (!isSearchOpen) return;
+    const timer = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 300);
+    return () => clearTimeout(timer);
   }, [isSearchOpen]);
 
   // Handle escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isSearchOpen) {
-        closeSearch();
+        handleClose();
       }
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, [isSearchOpen, closeSearch]);
+  }, [isSearchOpen, handleClose]);
 
   // Navigate to product
   const handleProductClick = (productId: number) => {
     closeSearch();
     router.push(`/product/${productId}`);
   };
-
-  if (!isSearchOpen && !isAnimating) return null;
 
   return (
     <div
@@ -119,7 +118,7 @@ const SearchOverlay = () => {
         className={`absolute inset-0 bg-charcoal/60 backdrop-blur-sm transition-opacity duration-500 ${
           isSearchOpen ? "opacity-100" : "opacity-0"
         }`}
-        onClick={closeSearch}
+        onClick={handleClose}
       />
 
       {/* Search Panel */}
@@ -131,7 +130,7 @@ const SearchOverlay = () => {
         <div className="container mx-auto px-6 md:px-12 py-8 md:py-12">
           {/* Close Button */}
           <button
-            onClick={closeSearch}
+            onClick={handleClose}
             className="absolute top-6 right-6 md:right-12 w-10 h-10 flex items-center justify-center group cursor-pointer"
             aria-label="Close search"
           >
@@ -246,6 +245,9 @@ export const Navbar = () => {
   const { user } = useAuthStore();
   const pathname = usePathname();
   const router = useRouter();
+  const prefersReducedMotion = useReducedMotion();
+  const isHome = pathname === "/";
+  const navDelay = isHome ? 2.0 : 0.2;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -265,7 +267,16 @@ export const Navbar = () => {
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Left: Hamburger + Search */}
-          <div className="flex items-center gap-4">
+          <motion.div
+            className="flex items-center gap-4"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: -36 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: navDelay }
+            }
+          >
             <button 
               onClick={toggleMenu}
               className="group flex flex-col gap-1.5 w-8 h-8 justify-center items-start cursor-pointer"
@@ -306,22 +317,41 @@ export const Navbar = () => {
                 />
               </svg>
             </button>
-          </div>
+          </motion.div>
 
           {/* Center: Logo */}
           <Link href="/" className="absolute left-1/2 -translate-x-1/2 cursor-pointer">
-            <Image
-              src="/logo.png"
-              alt="VEPHYR"
-              width={300}
-              height={72}
-              className="h-12 sm:h-14 md:h-20 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-none"
-              priority
-            />
+            <motion.div
+              initial={prefersReducedMotion ? false : { opacity: 0, y: -22 }}
+              animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+              transition={
+                prefersReducedMotion
+                  ? { duration: 0 }
+                  : { duration: 1.25, ease: [0.22, 1, 0.36, 1], delay: navDelay + 0.1 }
+              }
+            >
+              <Image
+                src="/logo.png"
+                alt="VEPHYR"
+                width={300}
+                height={72}
+                className="h-12 sm:h-14 md:h-20 w-auto max-w-[180px] sm:max-w-[220px] md:max-w-none"
+                priority
+              />
+            </motion.div>
           </Link>
 
           {/* Right: Actions */}
-          <div className="flex items-center gap-6 md:gap-8 font-mono text-xs tracking-wider text-charcoal">
+          <motion.div
+            className="flex items-center gap-6 md:gap-8 font-mono text-xs tracking-wider text-charcoal"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: 36 }}
+            animate={prefersReducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: navDelay + 0.2 }
+            }
+          >
             
             <button
               onClick={() => {
@@ -347,10 +377,9 @@ export const Navbar = () => {
               <CartPreview />
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </header>
     </>
   );
 };
-

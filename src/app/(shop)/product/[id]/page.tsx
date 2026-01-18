@@ -20,5 +20,5 @@ export default async function ProductPage({
   }
 
   // Render client component for interactive parts
-  return <ProductDetailsClient product={product as any} />;
+  return <ProductDetailsClient product={product} />;
 }

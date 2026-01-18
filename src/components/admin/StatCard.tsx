@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, ArrowDownRight, DollarSign } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 interface StatCardProps {
   title: string;

@@ -24,7 +24,6 @@ export default function CreateProductPage() {
   const router = useRouter();
   // Placeholder state for future media/variant features
   const images: string[] = [];
-  const variants: { size: string; color: string; stock: number }[] = [];
 
   const getBaseUrl = () => {
     if (typeof window !== "undefined") return window.location.origin;

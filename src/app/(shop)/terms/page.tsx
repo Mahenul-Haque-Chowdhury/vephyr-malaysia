@@ -10,7 +10,7 @@ export default function TermsPage() {
           <h2 className="text-charcoal pt-4 tracking-widest">1. AGREEMENT TO TERMS</h2>
           <p>
             These Terms of Use constitute a legally binding agreement made between you, whether personally 
-            or on behalf of an entity ("you") and Vephyr ("we," "us", or "our"), concerning your access 
+            or on behalf of an entity (&quot;you&quot;) and Vephyr (&quot;we,&quot; &quot;us&quot;, or &quot;our&quot;), concerning your access 
             to and use of the Vephyr website.
           </p>
 
@@ -18,7 +18,7 @@ export default function TermsPage() {
           <p>
             Unless otherwise indicated, the Site is our proprietary property and all source code, databases, 
             functionality, software, website designs, audio, video, text, photographs, and graphics on the 
-            Site (collectively, the "Content") are owned or controlled by us or licensed to us.
+            Site (collectively, the &quot;Content&quot;) are owned or controlled by us or licensed to us.
           </p>
           
           <h2 className="text-charcoal pt-4 tracking-widest">3. PURCHASES AND PAYMENT</h2>

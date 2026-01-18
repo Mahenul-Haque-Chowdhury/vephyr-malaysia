@@ -16,7 +16,7 @@ export default function AboutPage() {
             technical performance and editorial aesthetics.
           </p>
           <p>
-            We believe in "Invisible Commerce." The shopping experience should feel like walking through 
+            We believe in &quot;Invisible Commerce.&quot; The shopping experience should feel like walking through 
             an empty gallery—calm, curated, and respectful of your attention.
           </p>
         </div>
