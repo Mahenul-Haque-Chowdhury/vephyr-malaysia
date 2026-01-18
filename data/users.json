@@ -1,0 +1,55 @@
+[
+  {
+    "id": "11a1ab47-5dae-4f9e-8e5d-dc5aa9b5670e",
+    "email": "arnob@gmail.com",
+    "name": "Arnob",
+    "kind": "account",
+    "createdAt": "2026-01-08T10:23:04.064Z",
+    "lastSeenAt": "2026-01-08T10:23:04.064Z",
+    "passwordSalt": "H7ml8VZABXYLb0cb+uJVsg==",
+    "passwordHash": "mi9EVBTuURv4sJt4wLor9yCPzZWr8tiuE1F8LwKa2MTR9mPJesrmVB6jqQ/jZoaOAO37WMPhww0kzvb1nQXQWQ=="
+  },
+  {
+    "id": "1ff1f42a-c250-464c-9fdb-0724d119b2c0",
+    "email": "admin@syndicatebd.net",
+    "kind": "account",
+    "createdAt": "2026-01-07T22:02:07.503Z",
+    "lastSeenAt": "2026-01-07T22:03:16.722Z",
+    "passwordSalt": "bKSpjJxPoKTHZaM521crKg==",
+    "passwordHash": "tfE6Arqe7K8fHB71CyeqtdY3QFpw8wcm1Kop4D5Z6/P76CyCOjz2YEmIQ1jzByxukgJWKt4DcNcaVQrfsoF6VQ==",
+    "addresses": [
+      {
+        "id": "cedc6b48-1cec-434a-8487-376cc5ed4da5",
+        "label": "Home",
+        "fullName": "Maheul Haque Chowdhury",
+        "line1": "80/B Gulshan Badda Link Road",
+        "city": "Dhaka",
+        "region": "",
+        "postalCode": "1212",
+        "country": "Bangladesh",
+        "phone": "01798651950",
+        "isDefaultShipping": true,
+        "isDefaultBilling": true
+      }
+    ],
+    "name": "Arnob",
+    "settings": {
+      "language": "en",
+      "currency": "MYR"
+    }
+  },
+  {
+    "id": "9ce6005b-aabc-4c62-8a42-265b0b3acc12",
+    "email": "aadad@gg.com",
+    "kind": "account",
+    "createdAt": "2026-01-07T21:41:41.362Z",
+    "lastSeenAt": "2026-01-07T21:41:41.362Z"
+  },
+  {
+    "id": "101c0cab-b618-4ffa-8cee-816f93db35ba",
+    "email": "hogfn@gmail.com",
+    "kind": "account",
+    "createdAt": "2026-01-07T21:39:32.681Z",
+    "lastSeenAt": "2026-01-07T21:39:32.681Z"
+  }
+]
